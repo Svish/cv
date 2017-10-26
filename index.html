@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="no">
+	<head>
+		<title>CV</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" media="all" href="css/layout.css">
+		<link rel="stylesheet" type="text/css" media="print" href="css/print.css">
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/main.js" defer></script>
+
+	</head>
+	<body>
+
+		<header id="header">
+			<h1>Curriculum Vitae</h1>
+		</header>
+		
+		<main id="main">
+			<form id="data" onsubmit="javascript:return false">
+				<fieldset name="person">
+					<legend>Personalia</legend>
+					<p>
+						<label for="person[name]">Navn</label>
+						<input required type="text" name="person[name]" id="person[name]" placeholder="Alice Person">
+					</p>
+					<p>
+						<label for="person[picture]">Bilde</label>
+						<input optional type="file" name="person[picture]" id="person[picture]">
+					</p>
+					<p>
+						<label for="person[address]">Adresse</label>
+						<textarea optional name="person[address]" id="person[address]" rows="3"></textarea>
+					</p>
+					<p>
+						<label for="person[email]">Epost</label>
+						<input required type="email" name="person[email]" id="person[email]" placeholder="alice.person@example.com">
+					</p>
+					<p>
+						<label for="person[phone]">Telefon</label>
+						<input required type="tel" pattern="^(?:\+\d+ )?[\d]+$" name="person[phone]" id="person[phone]" placeholder="+47 12345678">
+					</p>
+					<p>
+						<label for="person[born]">Født</label>
+						<input required type="date" pattern="^\d{4}-\d{2}-\d{2}$" name="person[born]" id="person[born]">
+					</p>
+				</fieldset>
+
+				<fieldset>
+					<legend>Nøkkelinformasjon</legend>
+					<textarea required name="summary" rows="5"></textarea>
+				</fieldset>
+
+				<fieldset name="work">
+					<legend>Yrkeserfaring</legend>
+					<button id="btn-work-add">+</button>
+				</fieldset>
+
+				<fieldset name="education">
+					<legend>Utdannelse</legend>
+					<button id="btn-education-add">+</button>
+				</fieldset>
+
+				<fieldset name="other">
+					<legend>Andre opplysninger</legend>
+					<button id="btn-other-add">+</button>
+				</fieldset>
+
+			</form>
+
+			<output for="data" name="cv"></output>
+
+		</main>
+			
+		<footer id="footer">
+			
+		</footer>
+
+
+
+		<!-- Data lists: -->
+
+		<datalist id="education-levels">
+			<option value="Etterutdanning">
+			<option value="Kurs">
+			<option value="Bachelor">
+			<option value="Master">
+			<option value="Doktorgrad">
+		</datalist>
+
+
+
+		<!-- Templates: -->
+
+		<script type="text/html" id="tmpl-work">
+			<div>
+				<input type="text" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="start" placeholder="Start" required>
+				<input type="text" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="end" placeholder="Slutt" optional>
+				<input type="text" name="company" placeholder="Sted" required>
+				<input type="text" name="position" placeholder="Tittel" required>
+			</div>
+		</script>
+
+		<script type="text/html" id="tmpl-education">
+			<div>
+				<input type="text" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="start" placeholder="Start" required>
+				<input type="text" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="end" placeholder="Slutt" optional>
+				<input type="text" name="institution" placeholder="Utdanningssted" required>
+				<input type="text" name="level" placeholder="Nivå/Grad" list="education-levels" required>
+				<input type="text" name="area" placeholder="Område/Emne" required>
+			</div>
+		</script>
+
+		<script type="text/html" id="tmpl-other">
+			<div>
+				<input type="text" name="name" required>
+				<input type="text" name="desc" required>
+			</div>
+		</script>
+	</body>
+</html>

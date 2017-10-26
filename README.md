@@ -1,17 +1,29 @@
-# Interactive Curriculum Vitae
+Interactive Curriculum Vitae
+===
 
-This project is a combination of solving a web development exercise given to me, and a hope of potentially ending up with something to manage my CV and, more importantly, variants of my CV. *Everything* on the CV is not necessarily interesting and relevant for *every* position at *every* company one might want to apply for.
+A combination of a solution to a web development exercise I have to do because of reasons, and a hope of potentially having something to manage my CV data and, more importantly, variants of the CV. *Everything* on the CV is not necessarily interesting and relevant for *every* position at *every* company one might want to apply for. And I don't want the common data spread out in various documents, going outta sync, etc...
 
-And since I don't like repeating myself, I don't want for example duplicate CV data spread out over several Word-documents. I'd like *one* place for my data, and the "several Word-documents" to be in sync with that.
+We'll have to see where it leads...
 
 
-## Currently thought requirements/goals/spec
+Spec
+===
 
-1. Fulfill the requirements of the initial part of the exercise.
-   * Just a stateless, interactive CV, limited to HTML, CSS, JS and jQuery.
-2. Persistence of the CV data
-   * Either in a database, in browser, export to a file, something... probably just as a file either locally or server-side.
-2. A way to create customized "views" of this CV with certain things highlighted, emphasized, removed, adjusted, etc.
-3. Persistance of customized views
-4. Export to PDF
-   * Alternatively/Probably just using a print stylesheet and print to PDF.
+Initial exercise spec (v1)
+---
+
+* Use given Word-CV as template.
+* Use *only* HTML, CSS, JS and jQuery.
+* Interactive.
+* Stateless.
+
+
+Further
+---
+
+* Persistence.
+	* Database, in-browser, local-file, something...
+* Customized "views" for a specific application.
+	* Allow things to be highlighted, emphasized, skipped, adjusted, etc.
+* Persistance and loading of "views".
+	* Same as for CV.

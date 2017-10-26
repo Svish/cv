@@ -1,0 +1,33 @@
+
+# No index
+Options -Indexes
+
+# Charset
+AddDefaultCharset UTF-8
+
+# Compression
+AddOutputFilterByType DEFLATE text/html text/plain
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE text/javascript application/javascript
+
+# Expiration
+ExpiresActive On
+ExpiresByType image/x-icon "access plus 1 week"
+ExpiresByType image/png "access plus 1 week"
+ExpiresByType image/jpeg "access plus 1 week"
+
+# Block hidden files
+<Files .*>
+	Order Deny,Allow
+	Deny From All
+</Files>
+
+#
+# Rewrite rules
+#
+RewriteEngine On
+
+# Environment
+RewriteBase /cv/
+SetEnv BASE /cv/
+SetEnv ENV dev

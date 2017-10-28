@@ -2,19 +2,31 @@
 # No index
 Options -Indexes
 
-# Charset
+# Default charset
 AddDefaultCharset UTF-8
+AddCharset UTF-8 .css .js .json .svg
+
+# Security headers
+Header always set Strict-Transport-Security "max-age=10886400" env=HTTPS
+Header always set X-Content-Type-Options "nosniff"
+
+# Type overrides
+AddType text/javascript .js
+<Files this.webmanifest>
+	ForceType "application/manifest+json; charset=utf-8"
+</Files>
 
 # Compression
 AddOutputFilterByType DEFLATE text/html text/plain
-AddOutputFilterByType DEFLATE text/css
-AddOutputFilterByType DEFLATE text/javascript application/javascript
+AddOutputFilterByType DEFLATE text/css text/javascript
+AddOutputFilterByType DEFLATE image/svg
 
 # Expiration
 ExpiresActive On
 ExpiresByType image/x-icon "access plus 1 week"
 ExpiresByType image/png "access plus 1 week"
 ExpiresByType image/jpeg "access plus 1 week"
+ExpiresByType image/svg "access plus 1 week"
 
 # Block hidden files
 <Files .*>
@@ -22,16 +34,7 @@ ExpiresByType image/jpeg "access plus 1 week"
 	Deny From All
 </Files>
 
-#
-# Rewrite rules
-#
-RewriteEngine On
-
 # Redirect HTTP => HTTS
+RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
-# Environment
-RewriteBase /
-SetEnv BASE /
-SetEnv ENV dev

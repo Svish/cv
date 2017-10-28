@@ -1,0 +1,48 @@
+{
+    "browserslist": [],
+    "connector": {
+        "name": "jsdom",
+        "options": {
+            "waitFor": 1000
+        }
+    },
+    "formatters": [
+        "codeframe"
+    ],
+    "ignoredUrls": [
+        {"domain": "fonts.googleapis.com", "rules": ["*"]},
+        {"domain": "cdnjs.cloudflare.com", "rules": ["*"]}
+    ],
+    "rulesTimeout": 120000,
+    "rules": {
+        
+        "amp-validator": "off",
+        "apple-touch-icons": "off",
+        "image-optimization-cloudinary": "off",
+        "highest-available-document-mode": "off",
+
+        "axe": "error",
+        "content-type": "error",
+        "disown-opener": "error",
+        "html-checker": ["error", {
+            "details": true
+        }],
+        "manifest-app-name": "error",
+        "manifest-exists": "error",
+        "manifest-file-extension": "error",
+        "manifest-is-valid": "error",
+        "meta-charset-utf-8": "error",
+        "meta-viewport": "error",
+        "no-disallowed-headers": ["error", {
+            "ignore": ["Server"]
+        }],
+        "no-friendly-error-pages": "error",
+        "no-html-only-headers": "error",
+        "no-protocol-relative-urls": "error",
+        "no-vulnerable-javascript-libraries": "error",
+        "ssllabs": "error",
+        "strict-transport-security": "error",
+        "validate-set-cookie-header": "error",
+        "x-content-type-options": "error"
+    }
+}

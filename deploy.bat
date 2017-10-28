@@ -1,6 +1,7 @@
 @echo off
 
 pushd %~dp0
+REM Sync with remote
 winscp /command //^
 	"open ""sftp://torleif@geekality.net"""^
 	"lcd %~dp0"^
@@ -8,7 +9,8 @@ winscp /command //^
 	"synchronize remote -mirror -transfer=binary -delete -filemask="" | .git*; *.git/; *.cache/; *.sublime-*;"""^
 	"exit"
 echo.
-popd
 
-REM -preview 
-REM	"rm "".cache"""^
+REM Lint with Sonar
+sonar https://cv.geekality.net
+
+popd

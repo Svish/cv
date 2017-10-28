@@ -2,32 +2,33 @@
 # No index
 Options -Indexes
 
-# Charset
+# Default charset
 AddDefaultCharset UTF-8
+AddCharset UTF-8 .css .js .json .svg
+
+# Security headers
+Header set X-Content-Type-Options "nosniff"
+
+# Type overrides
+AddType text/javascript .js
+<Files this.webmanifest>
+	ForceType "application/manifest+json; charset=utf-8"
+</Files>
 
 # Compression
 AddOutputFilterByType DEFLATE text/html text/plain
-AddOutputFilterByType DEFLATE text/css
-AddOutputFilterByType DEFLATE text/javascript application/javascript
+AddOutputFilterByType DEFLATE text/css text/javascript
+AddOutputFilterByType DEFLATE image/svg
 
 # Expiration
 ExpiresActive On
 ExpiresByType image/x-icon "access plus 1 week"
 ExpiresByType image/png "access plus 1 week"
 ExpiresByType image/jpeg "access plus 1 week"
+ExpiresByType image/svg "access plus 1 week"
 
 # Block hidden files
 <Files .*>
 	Order Deny,Allow
 	Deny From All
 </Files>
-
-#
-# Rewrite rules
-#
-RewriteEngine On
-
-# Environment
-RewriteBase /cv/
-SetEnv BASE /cv/
-SetEnv ENV dev

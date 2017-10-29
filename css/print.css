@@ -3,6 +3,7 @@
 body
 {
 	margin: 2cm;
+	font-size: .9em;
 }
 
 /* Bold labels */
@@ -45,8 +46,7 @@ fieldset[name=person] p
 
 /* Bold "titles"  */
 fieldset>div:not(.dated) input:nth-child(1),
-fieldset>div.dated input:nth-child(1),
-fieldset>div.dated input:nth-child(2)
+fieldset>div.dated .date
 {
 	font-weight: bold;
 }

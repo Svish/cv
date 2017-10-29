@@ -31,25 +31,21 @@ body
 #header
 {
 	position: relative;
-	padding: 1.25rem 1.5rem;
-	line-height: 1.75em;
+	padding: 1em 1.5rem;
+	line-height: 1.9em;
 
 	margin-top: -1px;
 	border-top: 1px solid #777;
 	background: #eee;
 	border-bottom: 1px solid #777;
 	box-shadow: 0 0 15px rgba(0,0,0,.35);
-
-	background-repeat: no-repeat;
-	background-position: right center;
-	background-size: auto 100%;
 }
 #header h1
 {
 	margin: 0;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-weight: 300;
-	font-size: 2.3rem;
+	font-size: 2.3em;
 	position: relative;
 	z-index: 2;
 }

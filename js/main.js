@@ -36,8 +36,9 @@ $(document)
 	.change();
 
 
-// TODO: Bind input => output 
-// ...Just CSS it?
+// Bind dates to sorter
+$(document).on('change', '.dated .date', onDateChanged);
+
 
 
 
@@ -74,6 +75,16 @@ function onPictureChanged(e)
 	{
 		header.image.style.backgroundImage = '';
 	}
+}
+
+
+/**
+ * Sort by dates.
+ */
+function onDateChanged(e)
+{
+	// TODO: Sort rows
+	console.info(e);
 }
 
 

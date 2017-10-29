@@ -78,4 +78,12 @@ fieldset>div.dated .date
 	{
 		display: none !important;
 	}
+	input,
+	select,
+	textarea
+	{
+		outline: none !important;
+		box-shadow: none;
+		animation: none;
+	}
 }

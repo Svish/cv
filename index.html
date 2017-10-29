@@ -24,119 +24,142 @@
 
 		<!-- Scripts -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/poly.js"></script>
 		<script src="js/main.js" defer></script>
 
 	</head>
 	<body>
 
 		<header id="header">
-			<h1>Curriculum Vitae</h1>
+			<h1>Curriculum Vitae
+				<span id="header-name"></span>
+			</h1>
+			<div id="header-image"></div>
 		</header>
 		
 		<main id="main">
-			<form id="data" onsubmit="javascript:return false">
+			<button id="btn-preview" type="button">Preview</button>
+			<form id="data" method="post" action="test.php">
 				<fieldset name="person">
 					<legend>Personalia</legend>
 					<p>
-						<label for="field.person[name]">Navn</label>
-						<input required type="text" name="person[name]" id="field.person[name]" placeholder="Alice Person">
+						<label for="field-person-name">Navn</label>
+						<input type="text" name="person[name]" id="field-person-name" placeholder="Alice Person" required>
 					</p>
 					<p>
-						<label for="field.person[picture]">Bilde</label>
-						<input type="file" name="person[picture]" id="field.person[picture]">
+						<label for="field-person-born">Født</label>
+						<input type="text" placeholder="åååå-mm-dd" pattern="^\d{4}-\d{2}-\d{2}$" name="person[born]" id="field-person-born" required>
+					</p>
+					<p class="no-print">
+						<label for="field-person-picture">Bilde</label>
+						<input type="file" name="person[picture]" id="field-person-picture">
 					</p>
 					<p>
-						<label for="field.person[address]">Adresse</label>
-						<textarea name="person[address]" id="field.person[address]" rows="3"></textarea>
+						<label for="field-person-email">Epost</label>
+						<input type="email" name="person[email]" id="field-person-email" placeholder="alice.person@example.com" required>
 					</p>
 					<p>
-						<label for="field.person[email]">Epost</label>
-						<input required type="email" name="person[email]" id="field.person[email]" placeholder="alice.person@example.com">
+						<label for="field-person-phone">Telefon</label>
+						<input type="tel" pattern="^(?:\+\d+ )?[\d ]+$" name="person[phone]" id="field-person-phone" placeholder="+47 12345678" required>
 					</p>
 					<p>
-						<label for="field.person[phone]">Telefon</label>
-						<input required type="tel" pattern="^(?:\+\d+ )?[\d]+$" name="person[phone]" id="field.person[phone]" placeholder="+47 12345678">
-					</p>
-					<p>
-						<label for="field.person[born]">Født</label>
-						<input required type="date" data-pattern="^\d{4}-\d{2}-\d{2}$" name="person[born]" id="field.person[born]">
+						<label for="field-person-address">Adresse</label>
+						<textarea name="person[address]" placeholder="Lokasjon..." id="field-person-address" rows="3"></textarea>
 					</p>
 				</fieldset>
 
-				<p>
-					<label for="field.summary">Nøkkelinformasjon</label>
-					<textarea required name="summary" id="field.summary" rows="5"></textarea>
-				</p>
-
-				<fieldset name="work">
-					<legend>Yrkeserfaring</legend>
-					<button type="button" id="btn-work-add">+</button>
+				<fieldset>
+					<p>
+						<label for="field-summary">Nøkkelinformasjon</label>
+						<textarea name="summary" placeholder="..." id="field-summary" rows="5" required></textarea>
+					</p>
 				</fieldset>
+				
+				<div class="fieldset-wrapper">
+					<fieldset name="work">
+						<legend>Yrkeserfaring</legend>
+						<button class="add" type="button">+</button>
+						<template>
+							<div class="dated">
+								<input type="text" class="date" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="start" placeholder="Start" required>
+								<input type="text" class="date" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="end" placeholder="Slutt">
+								<input type="text" name="company" placeholder="Sted" required>
+								<input type="text" name="position" placeholder="Tittel" list="work-titles" required>
+								<button class="remove" type="button">–</button>
+							</div>
+						</template>
+					</fieldset>
+				</div>
 
-				<fieldset name="education">
-					<legend>Utdannelse</legend>
-					<button type="button" id="btn-education-add">+</button>
-				</fieldset>
+				<div class="fieldset-wrapper">
+					<fieldset name="education">
+						<legend>Utdannelse</legend>
+						<button class="add" type="button">+</button>
+						<template>
+							<div class="dated">
+								<input type="text" class="date" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="start" placeholder="Start" required>
+								<input type="text" class="date" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="end" placeholder="Slutt">
+								<input type="text" name="institution" placeholder="Utdanningssted" required>
+								<input type="text" name="level" placeholder="Nivå/Grad" list="education-levels" required>
+								<input type="text" name="area" placeholder="Område/Emne" required>
+								<button class="remove" type="button">–</button>
+							</div>
+						</template>
+					</fieldset>
+				</div>
 
-				<fieldset name="other">
-					<legend>Andre opplysninger</legend>
-					<button type="button" id="btn-other-add">+</button>
-				</fieldset>
-
+				<div class="fieldset-wrapper">
+					<fieldset name="other">
+						<legend>Andre opplysninger</legend>
+						<button class="add" type="button">+</button>
+						<template>
+							<div>
+								<input type="text" name="name" placeholder="Tittel" list="other-titles" required>
+								<input type="text" name="desc" placeholder="Tekst" required>
+								<button class="remove" type="button">–</button>
+							</div>
+						</template>
+					</fieldset>
+				</div>
 			</form>
 
 			<output for="data" name="cv"></output>
 
 		</main>
 			
-		<footer id="footer">
+		<footer id="footer" class="no-print">
 			<dl>
-				<dt>Source</dt>
-				<dd>At <a href="https://github.com/Svish/cv">GitHub</a> licensed by <a href="https://github.com/Svish/cv/blob/master/LICENSE.md">The Unlicense</a></dd>
-				<dt>Icons</dt>
-				<dd>By <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from <a href="https://www.flaticon.com">Flaticon</a> licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC 3.0 BY</a></dd>
+				<div>
+					<dt>Source</dt>
+					<dd>at <a href="https://github.com/Svish/cv">GitHub</a> licensed by <a href="https://github.com/Svish/cv/blob/master/LICENSE.md">The Unlicense</a></dd>
+				</div>
+				<div>
+					<dt>Icons</dt>
+					<dd>by <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from <a href="https://www.flaticon.com">Flaticon</a> licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC 3.0 BY</a></dd>
+				</div>
 			</dl>
 		</footer>
 
 
-		<!-- Data lists: -->
-
 		<datalist id="education-levels">
-			<option value="Etterutdanning">
-			<option value="Kurs">
 			<option value="Bachelor">
 			<option value="Master">
 			<option value="Doktorgrad">
+			<option value="Etterutdanning">
+			<option value="Kurs">
 		</datalist>
 
+		<datalist id="work-titles">
+			<option value="Software Engineer">
+			<option value="Technical Consultant">
+			<option value="Web Designer">
+			<option value="Web Developer">
+		</datalist>
 
-
-		<!-- Templates: -->
-
-		<script type="text/html" id="tmpl-work">
-			<div>
-				<input type="text" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="start" placeholder="Start" required>
-				<input type="text" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="end" placeholder="Slutt">
-				<input type="text" name="company" placeholder="Sted" required>
-				<input type="text" name="position" placeholder="Tittel" required>
-			</div>
-		</script>
-
-		<script type="text/html" id="tmpl-education">
-			<div>
-				<input type="text" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="start" placeholder="Start" required>
-				<input type="text" pattern="^\d{4}(?:-\d{2}(?:-\d{2})?)?$" name="end" placeholder="Slutt">
-				<input type="text" name="institution" placeholder="Utdanningssted" required>
-				<input type="text" name="level" placeholder="Nivå/Grad" list="education-levels" required>
-				<input type="text" name="area" placeholder="Område/Emne" required>
-			</div>
-		</script>
-
-		<script type="text/html" id="tmpl-other">
-			<div>
-				<input type="text" name="name" required>
-				<input type="text" name="desc" required>
-			</div>
-		</script>
+		<datalist id="other-titles">
+			<option value="Språk">
+			<option value="Sertifikat">
+			<option value="Interesser">
+		</datalist>
 	</body>
 </html>

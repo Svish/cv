@@ -1,0 +1,81 @@
+
+/* Page margin */
+body
+{
+	margin: 2cm;
+}
+
+/* Bold labels */
+label
+{
+	font-weight: bold;
+}
+
+/* Remove summary label */
+label[for=field-summary]
+{
+	display: none;
+}
+
+/* No "color" or padding on input */
+input,
+select,
+textarea
+{
+	background: none !important;
+	border: none !important;
+	padding: 0;
+}
+label,
+input,
+select,
+textarea
+{
+	font-size: 1em;
+}
+
+/* Personalia on lines */
+fieldset[name=person] p
+{
+	margin-bottom: .25em;
+	display: grid;
+	grid-gap: .25em;
+	grid-template-columns: 6em 1fr;
+}
+
+/* Bold "titles"  */
+fieldset>div:not(.dated) input:nth-child(1),
+fieldset>div.dated input:nth-child(1),
+fieldset>div.dated input:nth-child(2)
+{
+	font-weight: bold;
+}
+
+/* No shadow on header */
+#header
+{
+	box-shadow: none;
+}
+
+/* Remove footer and no-print */
+.no-print,
+#footer
+{
+	display: none !important;
+}
+
+/* Hide placeholder texts */
+::-webkit-input-placeholder { color: transparent }
+:-ms-input-placeholder { color: transparent }
+::-ms-input-placeholder { color: transparent }
+::placeholder { color: transparent }
+
+
+/* Remove "Preview" button only on actual print */ 
+@media print
+{
+	button
+	{
+		display: none !important;
+	}
+}

@@ -1,0 +1,313 @@
+
+/* Default font */
+body,
+input,
+textarea,
+select
+{
+	font: 120%/1.5 'Open Sans', sans-serif;
+}
+
+
+
+/* Html & Body */
+html,
+body
+{
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background: #fff;
+}
+body
+{
+	cursor: default;
+	overflow-y: scroll;
+}
+
+
+
+/* Header */
+#header
+{
+	position: relative;
+	padding: 1.25rem 1.5rem;
+	line-height: 1.75em;
+
+	margin-top: -1px;
+	border-top: 1px solid #777;
+	background: #eee;
+	border-bottom: 1px solid #777;
+	box-shadow: 0 0 15px rgba(0,0,0,.35);
+
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-size: auto 100%;
+}
+#header h1
+{
+	margin: 0;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 300;
+	font-size: 2.3rem;
+	position: relative;
+	z-index: 2;
+}
+#header-name
+{
+	color: #f90;
+	display: block;
+	font-size: .9em;
+}
+#header-name:empty:before
+{
+	content: "…";
+}
+#header-image
+{
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: right 1.5rem center;
+	filter: drop-shadow(0 0 10px rgba(0,0,0,.25));
+}
+
+
+
+/* Main */
+#main
+{
+	padding: 1.25rem 1.5rem;
+	margin: 0;
+	position: relative;
+}
+#btn-preview
+{
+	position: absolute;
+	top: 1.25rem;
+	right: 1.5rem;
+}
+p,
+fieldset
+{
+	margin: 0 0 .5em 0;
+}
+
+
+
+/* Footer */
+#footer
+{
+	padding: .25rem 1.5rem;
+	border-top: 1px solid #ccc;
+	font-size: small;
+}
+#footer dt,
+#footer dd
+{
+	display: inline-block;
+	margin-left: 0;
+}
+#footer dt
+{
+	font-weight: bold;
+}
+
+
+
+/* Input */
+label
+{
+	display: inline-block;
+}
+input,
+select,
+textarea
+{
+	display: block;
+	width: 100%;
+}
+input,
+select,
+textarea,
+fieldset
+{
+	border: 1px solid #999;
+	font-size: .85em;
+	text-overflow: ellipsis;
+	padding: .25em .5em;
+}
+input,
+select,
+textarea,
+fieldset,
+button
+{
+	box-sizing: border-box;
+}
+input,
+select,
+textarea
+{
+	background: #eee;
+	transition: border-color 250ms ease-out;
+	transition: box-shadow 250ms ease-out;
+}
+label:hover + input,
+label:hover + select,
+label:hover + textarea
+{
+	border-color: #111;
+}
+fieldset
+{
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+legend
+{
+	padding: 0;
+	font-size: 1.2em;
+	color: #777;
+}
+textarea
+{
+	resize: vertical;
+	min-height: calc(1.5em + .25em * 2);
+}
+input:required,
+select:required,
+textarea:required
+{
+	background-image: radial-gradient(#222 22%, transparent 22%);
+	background-size: 1em 1em;
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+
+input:required:invalid,
+select:required:invalid,
+textarea:required:invalid
+{
+	background-image: radial-gradient(#c00 22%, transparent 22%);
+}
+input:focus,
+select:focus,
+textarea:focus
+{
+	border-color: #111;
+}
+input:invalid,
+select:invalid,
+textarea:invalid
+{
+	box-shadow: none;
+	outline: 1px dotted #c00;
+}
+input:invalid:not(:focus),
+select:invalid:not(:focus),
+textarea:invalid:not(:focus)
+{
+	animation: 1.25s infinite alternate shadow-flash;
+}
+
+
+/* Buttons */
+button
+{
+	border: 1px solid #777;
+	background-color: #eee;
+}
+button:hover,
+button:hover
+{
+	border: 1px solid #55f;
+	background-color: #ccf;
+}
+
+
+/* Fieldsets */
+.fieldset-wrapper
+{
+	position: relative;
+}
+fieldset button.add
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+fieldset button
+{
+	width: 2rem;
+}
+
+/* Rows */
+fieldset>div
+{
+	margin: 0 0 .75em 0;
+	font-size: .8em;
+	display: grid;
+	grid-gap: .25em;
+	
+	position: relative;
+	animation: slide-in 750ms;
+}
+fieldset>div button
+{
+	grid-column: -1;
+	grid-row: -1;
+	justify-self: end;
+	align-self: start;
+}
+
+/* Rows: Dated */
+fieldset>div.dated
+{
+	grid-template-columns: 6em 6em 1fr;
+}
+fieldset>div.dated input:nth-child(n+3)
+{
+	grid-column: 3;
+}
+
+/* Rows: Not dated */
+fieldset>div:not(.dated)
+{
+	grid-template-columns: calc(6em * 2 + .25em) 1fr;
+}
+
+
+/* Animation: slide-in */
+@keyframes slide-in {
+	from
+	{
+		opacity: 0;
+		left: -3em;
+	}
+	to
+	{
+		opacity: 1;
+		left: 0;
+	}
+}
+
+
+/* Animation: shadow-flash */
+@keyframes shadow-flash {
+	from
+	{
+		box-shadow: 0 0 1em rgba(150,0,0,.7);
+	}
+	to
+	{
+		box-shadow: 0 0 1em rgba(150,0,0,.3);
+	}
+}
+

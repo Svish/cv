@@ -83,8 +83,22 @@ function onPictureChanged(e)
  */
 function onDateChanged(e)
 {
-	// TODO: Sort rows
-	console.info(e);
+	const fs = e.target.closest('fieldset');
+	const btn = fs.querySelector('button');
+
+	let rows = [...fs.querySelectorAll('.dated')];
+	rows.sort((x,y) =>
+		{
+			let x_date = x.querySelector('input');
+			let y_date = y.querySelector('input');
+
+			return x_date === y_date
+				? 0
+				: x_date > y_date
+				? -1
+				: 1;
+		});
+	rows.forEach(x => console.info(x));
 }
 
 

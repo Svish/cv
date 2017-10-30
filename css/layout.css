@@ -38,7 +38,6 @@ body
 	border-top: 1px solid #777;
 	background: #eee;
 	border-bottom: 1px solid #777;
-	box-shadow: 0 0 15px rgba(0,0,0,.35);
 }
 #header h1
 {
@@ -204,13 +203,7 @@ select:invalid,
 textarea:invalid
 {
 	box-shadow: none;
-	outline: 1px dotted #c00;
-}
-input:invalid:not(:focus),
-select:invalid:not(:focus),
-textarea:invalid:not(:focus)
-{
-	animation: 1.25s infinite alternate shadow-flash;
+	outline: .15em dotted rgba(204,0,0,.65);
 }
 
 
@@ -293,17 +286,3 @@ fieldset>div:not(.dated)
 		left: 0;
 	}
 }
-
-
-/* Animation: shadow-flash */
-@keyframes shadow-flash {
-	from
-	{
-		box-shadow: 0 0 1em rgba(150,0,0,.7);
-	}
-	to
-	{
-		box-shadow: 0 0 1em rgba(150,0,0,.3);
-	}
-}
-

@@ -127,6 +127,7 @@ function onAdd(e)
 		});
 
 	fs.insertBefore(row, btn.nextSibling);
+	row.querySelector('input').focus();
 }
 
 

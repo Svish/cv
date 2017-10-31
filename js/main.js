@@ -99,18 +99,12 @@ function onDateChanged(e)
 }
 function datedRowCompare(x, y)
 {
-	// NOTE: Adding colon to prevent js comparing as number
+	// NOTE: Adding colon to prevent comparing as number
 	const x_date = ':' + x.querySelector('input').value;
 	const y_date = ':' + y.querySelector('input').value;
 
 	if(x_date === y_date)
 		return 0;
-
-	if( ! x_date)
-		return -1;
-
-	if( ! y_date)
-		return 1;
 
 	return x_date > y_date ? -1 : 1;
 }

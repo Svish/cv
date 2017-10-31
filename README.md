@@ -18,6 +18,11 @@ Initial exercise spec (v1)
 * Stateless.
 
 
+**Skipped for simplicity**
+
+* Drag'n'drop reordering of "other"
+* Visible input validation rules, error messages, etc.
+
 Further
 ---
 

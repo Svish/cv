@@ -22,6 +22,7 @@ Initial exercise spec (v1)
 
 * Drag'n'drop reordering of "other"
 * Visible input validation rules, error messages, etc.
+* ...
 
 Further
 ---

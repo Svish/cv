@@ -62,7 +62,6 @@ function onNameChanged(e)
  */
 function onPictureChanged(e)
 {
-	// TODO: Put picture in header center right (circle? or just rounded?)
 	const file = e.target.files[0];
 	if(file)
 	{
@@ -79,26 +78,41 @@ function onPictureChanged(e)
 
 
 /**
- * Sort by dates.
+ * Sort rows by start date, descending.
  */
 function onDateChanged(e)
 {
-	const fs = e.target.closest('fieldset');
-	const btn = fs.querySelector('button');
-
+	const row = e.target.closest('.dated');
+	const fs = row.closest('fieldset');
 	let rows = [...fs.querySelectorAll('.dated')];
-	rows.sort((x,y) =>
-		{
-			let x_date = x.querySelector('input');
-			let y_date = y.querySelector('input');
+	if(rows.length <= 1)
+		return;
 
-			return x_date === y_date
-				? 0
-				: x_date > y_date
-				? -1
-				: 1;
-		});
-	rows.forEach(x => console.info(x));
+	let ci = rows.indexOf(row);
+	rows.sort(datedRowCompare);
+	let ni = rows.indexOf(row);
+
+	if(ci === ni)
+		return;
+	
+	fs.insertBefore(row, rows[ni+1]);
+}
+function datedRowCompare(x, y)
+{
+	// NOTE: Adding colon to prevent js comparing as number
+	const x_date = ':' + x.querySelector('input').value;
+	const y_date = ':' + y.querySelector('input').value;
+
+	if(x_date === y_date)
+		return 0;
+
+	if( ! x_date)
+		return -1;
+
+	if( ! y_date)
+		return 1;
+
+	return x_date > y_date ? -1 : 1;
 }
 
 

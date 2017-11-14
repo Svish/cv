@@ -1,9 +1,6 @@
 
 require('file-loader?name=[name].[ext]!./index.html');
-
 require('file-loader?name=[name]!./.htaccess');
-require('file-loader?name=[name].[ext]!./.htaccess.local');
-
 require('./layout.less');
 
 

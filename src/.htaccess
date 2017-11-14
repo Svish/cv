@@ -12,21 +12,7 @@ Header always set X-Content-Type-Options "nosniff"
 
 # Type overrides
 AddType text/javascript .js
-<Files this.webmanifest>
-	ForceType "application/manifest+json; charset=utf-8"
-</Files>
 
-# Compression
-AddOutputFilterByType DEFLATE text/html text/plain
-AddOutputFilterByType DEFLATE text/css text/javascript
-AddOutputFilterByType DEFLATE image/svg
-
-# Expiration
-ExpiresActive On
-ExpiresByType image/x-icon "access plus 1 week"
-ExpiresByType image/png "access plus 1 week"
-ExpiresByType image/jpeg "access plus 1 week"
-ExpiresByType image/svg "access plus 1 week"
 
 # Block hidden files
 <Files .*>
@@ -34,7 +20,27 @@ ExpiresByType image/svg "access plus 1 week"
 	Deny From All
 </Files>
 
-# Redirect HTTP => HTTS
+
+# Compress text
+AddOutputFilterByType DEFLATE text/html text/plain
+AddOutputFilterByType DEFLATE text/css text/javascript
+AddOutputFilterByType DEFLATE image/svg+xml
+
+
+ExpiresActive On
+
+# Media Expiration
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType image/x-icon "access plus 1 month"
+ExpiresByType image/svg+xml "access plus 1 month"
+
+
 RewriteEngine On
+
+# Redirect HTTP => HTTS
 RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !=localhost
+RewriteCond %{REMOTE_ADDR} !=127.0.0.1
+RewriteCond %{REMOTE_ADDR} !=::1
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

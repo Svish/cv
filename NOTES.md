@@ -1,4 +1,31 @@
 
+Webpack
+===
+
+- [HTML copy](https://github.com/jantimon/html-webpack-plugin)
+	- https://stackoverflow.com/a/33519539/39321
+- Vue.js
+	- https://vuejs.org/v2/guide/installation.html
+	- https://vuejs.org/v2/guide/single-file-components.html
+	- https://github.com/vuejs/awesome-vue#source-code-editing
+- Webpack
+	- https://blog.envylabs.com/getting-started-with-webpack-2-ed2b86c68783
+	- https://yarnpkg.com/en/docs/install#windows-tab
+- Babel
+	- http://babeljs.io/docs/plugins/transform-async-to-generator/
+	- http://babeljs.io/docs/plugins/transform-strict-mode/
+	- https://sebastiandedeyne.com/posts/2017/whats-in-our-babelrc
+
+- Process:
+	- `npm init -y`
+	- `npm install --save-dev webpack`
+	- `npm install --save-dev html-webpack-plugin`
+	- `npm install --save-dev clean-webpack-plugin`
+	- `npm install --save-dev babel-loader babel-core babel-preset-env`
+	- Add `webpack.config.js`
+	
+
+
 Notes to self
 ===
 

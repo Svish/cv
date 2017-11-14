@@ -8,7 +8,9 @@
 			],
 			"folder_exclude_patterns":
 			[
-				".git"
+				".git",
+				"dist",
+				"node_modules"
 			],
 			"path": "."
 		}

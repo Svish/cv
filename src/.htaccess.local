@@ -7,7 +7,7 @@ AddDefaultCharset UTF-8
 AddCharset UTF-8 .css .js .json .svg
 
 # Security headers
-Header set X-Content-Type-Options "nosniff"
+Header always set X-Content-Type-Options "nosniff"
 
 # Type overrides
 AddType text/javascript .js

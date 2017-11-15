@@ -5,6 +5,8 @@ Webpack
 - [HTML copy](https://github.com/jantimon/html-webpack-plugin)
 	- https://stackoverflow.com/a/33519539/39321
 - Vue.js
+	- https://vuejs-templates.github.io/webpack/
+	- https://vuex.vuejs.org/en/getting-started.html
 	- https://vuejs.org/v2/guide/installation.html
 	- https://vuejs.org/v2/guide/single-file-components.html
 	- https://github.com/vuejs/awesome-vue#source-code-editing
